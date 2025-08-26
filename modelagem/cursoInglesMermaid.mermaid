@@ -1,0 +1,56 @@
+---
+config:
+  layout: dagre
+  theme: redux-color
+title: Curso de Inglês
+---
+erDiagram
+	direction TB
+    ALUNO {
+		string id_aluno PK ""  
+		string nome  ""  
+		date data_nascimento  ""  
+		string email  ""  
+		string telefone  ""  
+	}
+	PROFESSOR {
+		string id_professor PK ""  
+		string nome  ""  
+		string cpf  ""  
+		string email  ""  
+		string telefone  ""  
+	}
+	TURMA {
+		string id_turma PK ""  
+		string nome  ""  
+		string nivel  ""  
+		string horario  ""  
+		string id_professor FK ""  
+	}
+	MATRICULA {
+		string id_matricula PK ""  
+		date data_matricula  ""  
+		string status  ""  
+		string id_aluno FK ""  
+		string id_turma FK ""  
+	}
+	PAGAMENTO {
+		string id_pagamento PK ""  
+		float valor  ""  
+		date data_pagamento  ""  
+		string status  ""  
+		string id_matricula FK ""  
+	}
+	AVALIACAO {
+		string id_avaliacao PK ""  
+		float nota  ""  
+		date data_avaliacao  ""  
+		string id_aluno FK ""  
+		string id_turma FK ""  
+	}
+	PROFESSOR||--o{TURMA:"leciona"
+	TURMA||--o{MATRICULA:"contém"
+	ALUNO||--o{MATRICULA:"realiza"
+	MATRICULA||--o{PAGAMENTO:"gera"
+	TURMA||--o{AVALIACAO:"possui"
+	ALUNO||--o{AVALIACAO:"faz"
