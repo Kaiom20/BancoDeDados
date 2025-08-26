@@ -1,0 +1,1 @@
+<img src="images/diagramaBrModel.jpg" width="100%">
